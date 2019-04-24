@@ -1,26 +1,49 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h1 class="text-center"> Categories Form: </h1>
+    @extends('layouts.master')
+    @section('title', 'Categories Form')
+    @section('content_head')
+    @section('content')
+
+
+
+
                 {{ Form::open(['url' => 'product/store']) }}
-                {{ Form::text('name','',['class'=>'form-control', 'placeholder'=>'Enter category name']) }}<br>
+                {{ Form::Select('category_id',$categories,null,['class'=>'form-control', 'placeholder'=>'Enter category name']) }}<br>
+                {{ Form::text('name','',['class'=>'form-control', 'placeholder'=>'Enter Poroduct name']) }}<br>
+                 @if($errors->has('name'))
+                     <p class="alert alert-danger">
+                        {{ $errors->first('name') }}
+                    </p>
+                     @endif
                 {{ Form::text('position','',['class'=>'form-control', 'placeholder'=>'category position']) }}<br>
+                @if($errors->has('position'))
+                    <p class="alert alert-danger">
+                        {{ $errors->first('position') }}
+                    </p>
+                @endif
                 {{ Form::text('office','',['class'=>'form-control', 'placeholder'=>'category office']) }}<br>
+                @if($errors->has('office'))
+                    <p class="alert alert-danger">
+                        {{ $errors->first('office') }}
+                    </p>
+                @endif
                 {{ Form::text('description','',['class'=>'form-control', 'placeholder'=>'category description']) }}<br>
-                {{ Form::date('start_date','',['class'=>'form-control', 'placeholder'=>'category Start date']) }}<br>
-                {{ Form::text('salary','',['class'=>'form-control', 'placeholder'=>'category salary']) }}<br>
+                @if($errors->has('description'))
+                    <p class="alert alert-danger">
+                        {{ $errors->first('description') }}
+                    </p>
+                @endif
+                {{ Form::file('photo','',['class'=>'form-control', 'placeholder'=>'category photo']) }}<br>
+                @if($errors->has('start_date'))
+                    <p class="alert alert-danger">
+                        {{ $errors->first('start_date') }}
+                    </p>
+                @endif
+                {{ Form::number('salary','',['class'=>'form-control', 'placeholder'=>'category salary']) }}<br>
+                @if($errors->has('salary'))
+                    <p class="alert alert-danger">
+                        {{ $errors->first('salary') }}
+                    </p>
+                @endif
 
                 {{ Form::submit('Save',['class'=>'btn btn-primary']) }}
                 {{ Form::close() }}
@@ -42,8 +65,5 @@
                         )
                     </script>
                 @endif
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+        @endsection
+

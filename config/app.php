@@ -1,5 +1,8 @@
 <?php
 
+use Barryvdh\Debugbar\Facade;
+use Barryvdh\Debugbar\ServiceProvider;
+
 return [
 
     /*
@@ -67,7 +70,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Dhaka',
 
     /*
     |--------------------------------------------------------------------------

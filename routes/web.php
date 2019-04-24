@@ -17,17 +17,19 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/open', 'ProductController@index');
-
-Route::get('/product', 'ItemController@get_form');
-Route::post('/product', 'ItemController@post_data');
 Route::get('/table', 'ItemController@index');
+Route::get('/open', 'ProductController@output');
 
-Route::get('product/create', 'CategoriesController@create');
-Route::post('product/store', 'CategoriesController@store');
-Route::get('product', 'CategoriesController@index');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('product', 'ProductController');
+
