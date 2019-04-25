@@ -10,7 +10,7 @@
 
             </ul>
         </li>
-        <li id="menu-academico"><a href="#"><i class="fa fa-list"></i> <span> Product</span> <span
+        <li id="menu-academico"><a href="#"><i class="fas fa-box"></i> <span> Products</span> <span
                     class="fa fa-angle-right" style="float: right"></span></a>
             <ul id="menu-academico-sub">
                 <li id="menu-academico-avaliacoes"><a href="{{ url('product') }}"> List </a></li>
@@ -18,14 +18,12 @@
 
             </ul>
         </li>
-        <li id="menu-academico"><a href="#"><i class="fa fa-file-text-o"></i> <span>Ui Elements</span> <span
+        <li id="menu-academico"><a href="#"><i class="fas fa-user"></i> <span> Customers</span> <span
                     class="fa fa-angle-right" style="float: right"></span></a>
             <ul id="menu-academico-sub">
-                <li id="menu-academico-avaliacoes"><a href="{{ asset('admin/forms.html') }}">Forms</a></li>
-                <li id="menu-academico-boletim"><a href="{{ asset('admin/validation.html') }}">Validation
-                        Forms</a></li>
-                <li id="menu-academico-boletim"><a href="{{ asset('admin/table.html') }}">Tables</a></li>
-                <li id="menu-academico-boletim"><a href="{{ asset('admin/buttons.html') }}">Buttons</a></li>
+                <li id="menu-academico-avaliacoes"><a href="{{ url('customer') }}"> List </a></li>
+                <li id="menu-academico-boletim"><a href="{{ url('customer/create') }}"> Create New</a></li>
+
             </ul>
         </li>
 
