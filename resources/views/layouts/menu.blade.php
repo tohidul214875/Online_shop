@@ -26,11 +26,29 @@
 
             </ul>
         </li>
-        @can('Shopon')
+        @can('')
             <li id="menu-academico"><a href="#"><i class="fas fa-users"></i> <span> User</span> <span class="fa fa-angle-right" style="float: right"></span></a>
                 <ul id="menu-academico-sub">
                     <li id="menu-academico-avaliacoes"><a href="{{ route('users.index') }}"> User List </a></li>
                     <li id="menu-academico-boletim"><a href="{{ route('users.create') }}">User Create</a></li>
+
+                </ul>
+            </li>
+        @endcan
+        @can('Show')
+            <li id="menu-academico"><a href="#"><i class="fas fa-users"></i> <span> Role</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                <ul id="menu-academico-sub">
+                    <li id="menu-academico-avaliacoes"><a href="{{ route('roles.index') }}"> Role List </a></li>
+                    <li id="menu-academico-boletim"><a href="{{ route('roles.create') }}">Add Role</a></li>
+
+                </ul>
+            </li>
+        @endcan
+        @can('Show')
+            <li id="menu-academico"><a href="#"><i class="fas fa-users"></i> <span> Permission</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                <ul id="menu-academico-sub">
+                    <li id="menu-academico-avaliacoes"><a href="{{ route('permissions.index') }}"> User List </a></li>
+                    <li id="menu-academico-boletim"><a href="{{ route('permissions.create') }}">User Create</a></li>
 
                 </ul>
             </li>

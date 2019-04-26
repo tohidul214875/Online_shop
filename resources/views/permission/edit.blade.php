@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('title', '| Edit Permission')
 
@@ -6,7 +6,7 @@
 
     <div class='col-lg-4 col-lg-offset-4'>
 
-        <h1><i class='fa fa-key'></i> Edit {{$permission->name}}</h1>
+        <h1 style="margin-top: -20px;"><i class="fas fa-pen-square"></i> {{$permission->name}}</h1>
         <br>
         {{ Form::model($permission, array('route' => array('permissions.update', $permission->id), 'method' => 'PUT')) }}{{-- Form model binding to automatically populate our fields with permission data --}}
 
