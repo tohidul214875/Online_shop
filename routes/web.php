@@ -38,3 +38,10 @@ Route::resource('customer', 'CustomerController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('users', 'UserController')->middleware('auth');
+
+Route::resource('roles', 'RoleController')->middleware('auth');
+
+Route::resource('permissions', 'PermissionController')->middleware('auth');
+

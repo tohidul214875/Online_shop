@@ -35,11 +35,14 @@
                 <td>{{ \Carbon\Carbon::parse($product->created_at)->format('d-M-Y')  }}</td>
                 <td>{{ \Carbon\Carbon::parse($product->updated_at)->diffForHumans() }}</td>
                 <td>
-                    <a href="{{ route('product.edit', $product->id) }}" class="btn-primary"><i class="fas fa-edit"></i></a> |
-                    {{ Form::open(['route' => ['product.update', $product->id], 'method'=>'delete']) }}
-                    <button type="submit" class="btn btn-sm btn-danger" style="margin-top: -34px !important;
+                    <a href="{{ route('product.edit', $product->id) }}" class=" btn-primary"><i class="fas fa-edit"></i></a> |
+
+                    @can('Delete')
+                        {{ Form::open(['route' => ['product.update', $product->id], 'method'=>'delete']) }}
+                        <button type="submit" class="btn btn-sm btn-danger" style="margin-top: -34px !important;
 margin-left: 26px !important;"><i class="fas fa-trash-alt" ></i></button>
                     {{ Form::close() }}
+                    @endcan
             </tr>
         @endforeach
         </tbody>
