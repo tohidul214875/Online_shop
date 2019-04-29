@@ -13,35 +13,30 @@
         <tr>
             <th>Id</th>
             <th>Name</th>
-            <th>Price</th>
+            <th>label</th>
             <th>Discription</th>
-            <th>Photo</th>
-            <th>Offic</th>
             <th>Added_at</th>
             <th>Updded_at</th>
             <th>Action</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($products as $product)
+        @foreach($datas as $data)
             <tr>
-                <td>{{ $product->id }}</td>
-                <td>{{ $product->name }}</td>
-                <td>{{ $product->price }}</td>
-                <td>{{ $product->discription }}</td>
-                <td><img src="{{ asset('storage/picture/'.$product->photo) }}" alt="no image"
-                         title="" class="img-responsive img-thumbnail" style="width: 30px;"></td>
-                <td>{{ $product->offic }}</td>
-                <td>{{ \Carbon\Carbon::parse($product->created_at)->format('d-M-Y')  }}</td>
-                <td>{{ \Carbon\Carbon::parse($product->updated_at)->diffForHumans() }}</td>
+                <td>{{ $data->id }}</td>
+                <td>{{ $data->name }}</td>
+                <td>{{ $data->lable }}</td>
+                <td>{{ $data->discription }}</td>
+                <td>{{ \Carbon\Carbon::parse($data->created_at)->format('d-M-Y')  }}</td>
+                <td>{{ \Carbon\Carbon::parse($data->updated_at)->diffForHumans() }}</td>
                 <td>
-                    <a href="{{ route('product.edit', $product->id) }}" class=""><i class="fas fa-edit" style="font-size: 30px;"></i></a> |
+                    <a href="{{ route('product.edit', $data->id) }}" class=""><i class="fas fa-edit" style="font-size: 30px;"></i></a> |
 
 
-                        {{ Form::open(['route' => ['product.update', $product->id], 'method'=>'delete']) }}
-                        <button type="submit" class="btn btn-sm btn-danger" style="margin-top: -36px !important;
+                    {{ Form::open(['route' => ['product.update', $data->id], 'method'=>'delete']) }}
+                    <button type="submit" class="btn btn-sm btn-danger" style="margin-top: -36px !important;
 margin-left: 45px !important;"><i class="fas fa-trash-alt" ></i></button>
-                    {{ Form::close() }}
+                {{ Form::close() }}
 
             </tr>
         @endforeach

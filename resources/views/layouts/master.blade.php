@@ -311,8 +311,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </header>
         <div style="border-top:1px solid rgba(69, 74, 84, 0.7)"></div>
         <!--/down-->
-        <div class="down">
-            <a href="{{ asset('admin/index.html') }}"><img src="{{ asset('admin/images/admin.jpg') }}"></a>
+        <div class="down" style="margin-top: -10px;">
+            <a href="{{ asset('admin/index.html') }}"><img src="{{ asset('admin/images/admin.jpg') }}"style="margin-top: -20px;"></a>
             <a href="{{ asset('admin/index.html') }}"><span class=" name-caret">Tohidul Islam Swapon</span></a>
             <p>System Administrator and Developer in Company</p>
             <ul>
@@ -320,8 +320,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             class="lnr lnr-user"></i></a></li>
                 <li><a class="tooltips" href="{{ asset('admin/index.html') }}"><span>Settings</span><i
                             class="lnr lnr-cog"></i></a></li>
-                <li><a class="tooltips" href="{{ asset('admin/index.html') }}"><span>Log out</span><i
+                <li><a class="tooltips" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><span>Log out</span><i
                             class="lnr lnr-power-switch"></i></a></li>
+							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
             </ul>
         </div>
         <!--//down-->

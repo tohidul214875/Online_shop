@@ -1,16 +1,29 @@
 @extends('layouts.master')
+
 @section('title', 'Products Form')
 @section('content_head', 'Product create')
 @section('content')
 
 
 
-
     {{ Form::open(['route' => 'product.store', 'files'=>true]) }}
-{{--{!! Form::open(['action' => 'ProductController@store', 'files'=>true, 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}--}}
+    {{--{!! Form::open(['action' => 'ProductController@store', 'files'=>true, 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}--}}
 
 
     <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                {{ Form::label('category', 'Select Category') }}
+            </div>
+            <style>
+                .set{
+                    padding: 7px;
+                }
+            </style>
+            <div class="col-md-7">
+                {{ Form::select('category_id',$categories,null,['class'=>'form-control set','required']) }}
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-4">
                 {{ Form::label('name', 'Product Name') }}

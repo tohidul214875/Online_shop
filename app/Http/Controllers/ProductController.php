@@ -1,51 +1,41 @@
 <?php
 
 namespace App\Http\Controllers;
-use Validator;
+
+use App\Category;
+use App\Item;
 use App\Product;
 use Illuminate\Http\Request;
+use Validator;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $products=Product::all();
+//        $items=Item::where('category_id', $id)->get();
         return view('product.index', compact('products'));
+//        $items=Item::all();
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        return view('product.create');
+//        $catList = DB::table('categories')->pluck('name', 'id');
+//        return view('product.create')->with('catlist', $catList);
+                $categories=Category::pluck('name', 'id');
+//        return $categories;
+        return view('product.create', compact('categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-//        $input = $request->all();
-//        //$data=Product::create($input);
-//
-//        try {
-//            $data = Product::create($input);
-//
-//            return redirect()->route('product.index')->with('success', 'Product Save');
-//        } catch (\Exception $s) {
-//            return redirect()->route('prodouct.index')->with('error', 'Product not Save');
-//        }
         if($request->hasFile('photo')){
             // Get filename with the extension
             $filenameWithExt = $request->file('photo')->getClientOriginalName();
@@ -60,45 +50,30 @@ class ProductController extends Controller
         } else {
             $fileNameToStore = 'noimage.jpg';
         }
-        $product = new product();
-        $product->name =  $request->name;
-        $product->price =  $request->price;
-        $product->discription =  $request->discription;
-        $product->offic =  $request->offic;
-        $product->photo = $fileNameToStore;
-        $product->save();
+        $item = new Product();
+        $item->category_id = $request->category_id;
+        $item->name =  $request->name;
+        $item->price =  $request->price;
+        $item->discription =  $request->discription;
+        $item->offic =  $request->offic;
+        $item->photo = $fileNameToStore;
+        $item->save();
         return redirect('product');
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Product $product)
+
+
+    public function show($id)
     {
-        //
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit( $id)
     {
         $data=Product::findOrFail($id);
         return view('product.edit', compact('data'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         $input=$request->all();
@@ -117,23 +92,10 @@ class ProductController extends Controller
         return $data;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $data=Product::findOrFail($id);
         $data->delete();
         return redirect()->route('product.index')->with('success', 'Product Delete');
-
     }
-//    public function delete($id){
-//        $data=Product::findOrFail($id);
-//        $data->delete();
-//        return redirect()->route('product.index')->wth('success', 'Product Delete');
-//
-//    }
 }

@@ -45,3 +45,6 @@ Route::resource('roles', 'RoleController')->middleware('auth');
 
 Route::resource('permissions', 'PermissionController')->middleware('auth');
 
+Route::resource('category', 'CategoryController');
+Route::resource('items', 'ItemController');
+
